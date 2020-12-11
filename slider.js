@@ -1,29 +1,5 @@
 'use strict';
-//import images from './image.js';
-
-const images = {
-    1: {
-        url: 'images/buzavirág.jpg',
-        title: 'buzavirag',
-        number: '1 / 4',
-    },
-    2: {
-        url: 'images/levendula3.jpg',
-        title: 'levendula',
-        number: '2 / 4',
-    },
-    3: {
-        url: 'images/mimoza1.jpg',
-        title: 'mimoza',
-        number: '3 / 4',
-    },
-    4: {
-        url: 'images/orchidea2.jpg',
-        title: 'orchidea',
-        number: '4 / 4',
-    },
-    current: 1,
-}
+import images from './image.js';
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
