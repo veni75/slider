@@ -1,17 +1,20 @@
 'use strict';
 import images from './image.js';
 
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
+const slider = document.querySelector('.slider');
+const prev = document.querySelector('.slider__prev');
+const next = document.querySelector('.slider__next');
 const img = document.querySelector('img');
-const title = document.querySelector('.title');
-const number = document.querySelector('.number');
-const marker = document.querySelector('.marker');
+const title = document.querySelector('.slider__image--title');
+const number = document.querySelector('.slider__image--number');
+const marker = document.querySelector('.slider__image--marker');
+let interval;
 
 const attributeSet = (actual) => {
     img.setAttribute('src', images[actual].url);
     title.textContent = images[actual].title;
     number.textContent = images[actual].number;
+
     for (let i = 0; i < marker.children.length; i++) {
         (marker.children[i].className = '');
     }
@@ -48,11 +51,8 @@ const appearImg = (i) => {
     images.current = i;
 }
 
-prev.addEventListener('click', () => prevImg());
-next.addEventListener('click', () => nextImg());
-
-const goSelf = (time) => {
-    setInterval(function () {
+const startSlider = (time) => {
+    interval = setInterval(function () {
         let actual = images.current;
         actual++;
         if (actual === 5) {
@@ -62,8 +62,29 @@ const goSelf = (time) => {
     }, time);
 }
 
-goSelf(3000);
-
-for (let i = 0; i < marker.children.length; i++) {
-    marker.children[i].addEventListener('click', () => appearImg(i));
+const stopSlider = () => {
+    clearInterval(interval);
 }
+
+const sliderHeight = (height) => {
+    let halfHeight = height / 2;
+    slider.style.height = `${height}px`;
+    img.style.height = `${height}px`;
+    prev.style.top = `-${halfHeight}px`;
+    next.style.top = `-${halfHeight}px`;
+}
+
+const listenerSet = () => {
+    sliderHeight(500);
+    //attributeSet(1);
+    prev.addEventListener('click', () => prevImg());
+    next.addEventListener('click', () => nextImg());
+    img.addEventListener('mouseover', stopSlider);
+    //img.addEventListener('mouseleave', () => startSlider(3000));
+    for (let i = 0; i < marker.children.length; i++) {
+        marker.children[i].addEventListener('click', () => appearImg(i));
+    }
+}
+listenerSet();
+
+
