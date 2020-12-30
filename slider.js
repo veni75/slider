@@ -66,21 +66,21 @@ const stopSlider = () => {
     clearInterval(interval);
 }
 
-const sliderHeight = (height) => {
-    let halfHeight = height / 2;
+const sliderHeight = (height) => {    
     slider.style.height = `${height}px`;
     img.style.height = `${height}px`;
-    prev.style.top = `-${halfHeight}px`;
-    next.style.top = `-${halfHeight}px`;
+    prev.style.top = `${height/2+50}px`;
+    prev.style.left = `-${height/2+50}px`;
+    next.style.top = `-${height/2}px`;
 }
 
 const listenerSet = () => {
     sliderHeight(500);
-    //attributeSet(1);
+    attributeSet(1);
     prev.addEventListener('click', () => prevImg());
     next.addEventListener('click', () => nextImg());
     img.addEventListener('mouseover', stopSlider);
-    //img.addEventListener('mouseleave', () => startSlider(3000));
+    img.addEventListener('mouseleave', () => startSlider(3000));
     for (let i = 0; i < marker.children.length; i++) {
         marker.children[i].addEventListener('click', () => appearImg(i));
     }
