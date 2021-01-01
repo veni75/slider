@@ -14,28 +14,19 @@ body {
     display: none;
 }
 
-img {
-    position: relative;
-}
-
-.slider__image {
-    position: relative;
-}
-
-.anim {
-    animation: animated_img 1s;
-}
-
-@keyframes animated_img {
+@keyframes anim {
     0% {
-        left: 700px;
         opacity: 0;
     }
 
     100% {
-        left: 0px;
         opacity: 1;
     }
+}
+
+.animati {
+    animation-name: anim;
+    animation-duration: 2s;
 }
 
 .slider__prev,
@@ -53,20 +44,13 @@ img {
     font-weight: bold;
     padding: 16px;
     position: relative;
-    transition: 0.6s ease;
     user-select: none;
     width: auto;
     -webkit-user-select: none;
 }
 
 .slider__prev {
-    left: -50px;
     z-index: 2;
-}
-
-.slider__next {
-    right: 50px;
-    
 }
 
 .slider__prev:hover,
@@ -80,15 +64,14 @@ img {
     padding: 8px 12px;
     position: relative;
     top: 35px;
-    left: -20rem;
     z-index: 2;
 }
 
 .slider__image--title {
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.3rem;
     position: relative;
-    bottom: 50px;
+    bottom: 40px;
     z-index: 10;
 }
 
